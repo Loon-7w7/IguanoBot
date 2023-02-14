@@ -44,6 +44,10 @@ client.on("messageCreate", async(msg) => { // When a message is created
 				console.error(e);
 			}
 	}
+	if (msg.content.startsWith(process.env.Prefix + 'adentro'))
+	{
+		msg.reply(`Adentro el Iguano`);
+	}
 });
 
 
