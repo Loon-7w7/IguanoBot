@@ -1,6 +1,7 @@
 import {config} from 'dotenv'
 config();
-import {Client, GatewayIntentBits, Message} from 'discord.js'
+import {Client, GatewayIntentBits} from 'discord.js'
+import {MessageGpt} from './Dicord objects/embledMessage';
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds,
     "DirectMessages","GuildPresences",
@@ -37,7 +38,14 @@ client.on("messageCreate", async(msg) => { // When a message is created
 						max_tokens: 1000,
 						stop: ['ChatGPT:', 'Tonanes:'],
 					});
-				msg.reply(`${gptResponse.data.choices[0].text}`);
+				if(gptResponse.data.choices[0].text != undefined)
+				{
+					msg.reply({embeds:[MessageGpt(msg,gptResponse.data.choices[0].text)]});
+				}
+				else
+				{
+					msg.reply({embeds:[MessageGpt(msg, 'Me repites? no te entendi')]});
+				}
 			}
 			catch (e) 
 			{

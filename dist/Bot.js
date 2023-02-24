@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
 const discord_js_1 = require("discord.js");
+const embledMessage_1 = require("./Dicord objects/embledMessage");
 const client = new discord_js_1.Client({ intents: [discord_js_1.GatewayIntentBits.Guilds,
         "DirectMessages", "GuildPresences",
         "MessageContent",
@@ -39,11 +40,19 @@ client.on("messageCreate", (msg) => __awaiter(void 0, void 0, void 0, function* 
                 max_tokens: 1000,
                 stop: ['ChatGPT:', 'Tonanes:'],
             });
-            msg.reply(`${gptResponse.data.choices[0].text}`);
+            if (gptResponse.data.choices[0].text != undefined) {
+                msg.reply({ embeds: [(0, embledMessage_1.MessageGpt)(msg, gptResponse.data.choices[0].text)] });
+            }
+            else {
+                msg.reply({ embeds: [(0, embledMessage_1.MessageGpt)(msg, 'Me repites? no te entendi')] });
+            }
         }
         catch (e) {
             console.error(e);
         }
+    }
+    if (msg.content.startsWith(process.env.Prefix + 'adentro')) {
+        msg.reply(`Adentro el Iguano`);
     }
 }));
 client.login(process.env.DISCORD_TOKEN);
