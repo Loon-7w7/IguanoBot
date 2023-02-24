@@ -9,7 +9,7 @@ export function MessageGpt(discordMsg: Message, messageBot: string): EmbedBuilde
 	.setDescription(messageBot)
 	.setTimestamp()
 	.setFooter({ text: 'Adentro el Iguano', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
-
+    console.log(discordMsg.author.avatar)
     if(discordMsg.author.avatar != null)
     {
         MessageEmbed.setAuthor({ name: discordMsg.author.username, iconURL: discordMsg.author.avatar })
