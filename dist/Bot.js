@@ -41,10 +41,10 @@ client.on("messageCreate", (msg) => __awaiter(void 0, void 0, void 0, function* 
                 stop: ['ChatGPT:', 'Tonanes:'],
             });
             if (gptResponse.data.choices[0].text != undefined) {
-                msg.reply({ embeds: [(0, embledMessage_1.MessageGpt)(msg, gptResponse.data.choices[0].text)] });
+                msg.reply({ embeds: [(0, embledMessage_1.MessageGpt)(msg, gptResponse.data.choices[0].text, client)] });
             }
             else {
-                msg.reply({ embeds: [(0, embledMessage_1.MessageGpt)(msg, 'Me repites? no te entendi')] });
+                msg.reply({ embeds: [(0, embledMessage_1.MessageGpt)(msg, 'Me repites? no te entendi', client)] });
             }
         }
         catch (e) {

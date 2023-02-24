@@ -41,11 +41,11 @@ client.on("messageCreate", async(msg) => { // When a message is created
 				if(gptResponse.data.choices[0].text != undefined)
 				{
 					
-					msg.reply({embeds:[MessageGpt(msg,gptResponse.data.choices[0].text)]});
+					msg.reply({embeds:[MessageGpt(msg,gptResponse.data.choices[0].text, client)]});
 				}
 				else
 				{
-					msg.reply({embeds:[MessageGpt(msg, 'Me repites? no te entendi')]});
+					msg.reply({embeds:[MessageGpt(msg, 'Me repites? no te entendi',client)]});
 				}
 			}
 			catch (e) 
