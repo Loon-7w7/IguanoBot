@@ -11,6 +11,7 @@ export function MessageGpt(discordMsg: Message, messageBot: string): EmbedBuilde
 	.setFooter({ text: 'Adentro el Iguano', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
     if(discordMsg.author.avatar != null)
     {
+        console.log(discordMsg.author.avatar)
         MessageEmbed.setAuthor({ name: discordMsg.author.username})
     }
     return MessageEmbed;
