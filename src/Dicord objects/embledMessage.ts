@@ -12,6 +12,7 @@ export function MessageGpt(discordMsg: Message, messageBot: string): EmbedBuilde
 
     if(discordMsg.author.avatar != null)
     {
+        console.log(discordMsg.author.avatar)
         MessageEmbed.setAuthor({ name: discordMsg.author.username, iconURL: discordMsg.author.avatar })
     }
     return MessageEmbed;
