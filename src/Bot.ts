@@ -38,9 +38,10 @@ client.on("messageCreate", async(msg) => { // When a message is created
 						max_tokens: 1000,
 						stop: ['ChatGPT:', 'Tonanes:'],
 					});
+				console.log(msg.content)
 				if(gptResponse.data.choices[0].text != undefined)
 				{
-					console.log(msg.content)
+					
 					msg.reply({embeds:[MessageGpt(msg,gptResponse.data.choices[0].text)]});
 				}
 				else
